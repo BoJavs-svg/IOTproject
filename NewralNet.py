@@ -34,8 +34,8 @@ class S(BaseHTTPRequestHandler):
         temp=0
         luz=0
         if "/temp" in self.path:
-            temp=self.path.split("=")[1]
-            luz=self.path.split("=")[3]
+            temp=float(self.path.split("=")[1])
+            luz=float(self.path.split("=")[3])
             print("temp = ")
             print(temp)
             print("luz = ")
@@ -142,11 +142,6 @@ def Train():
     #Save the model
     with open('model.pkl', 'wb') as file:
         pickle.dump(mlp, file)
-def run(server_class=HTTPServer, handler_class=S, port=80):
-    server_address = ('', port)
-    httpd = server_class(server_address, handler_class)
-    print('Starting httpd...')
-    httpd.serve_forever()
 
 if __name__ == "__main__":
     from sys import argv
