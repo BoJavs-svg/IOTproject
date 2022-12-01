@@ -32,8 +32,8 @@ class S(BaseHTTPRequestHandler):
         temp=0
         luz=0
         if "/temp" in self.path:
-            temp=self.path.split("=")[1]
-            luz=self.path.split("=")[3]
+            temp=float(self.path.split("=")[1])
+            luz=float(self.path.split("=")[3])
             print("temp = ")
             print(temp)
             print("luz = ")
