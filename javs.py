@@ -4,8 +4,6 @@ import pandas as pd
 import pickle
 import sqlalchemy
 
-db = mysql.connector.connect(host = 'hungry_leakey', user = 'user', password = '', port = 3306)
-cursor = db.cursor()
 #Upload data to database
 def upload_data():
     try:
@@ -33,8 +31,14 @@ def get_data():
     except Error as e:
         print("Error: ", e)
 
-if "_main" == __name_:
+def main():
     #Create the neural network
+    print("Before")
+    db = mysql.connector.connect(host = '3306', user = 'user', password = '', port = 3306,database='db')
+    print("After")
+    cursor = db.cursor()
     upload_data()
     df=get_data()
     print(df)
+if "__main__" == __name__:
+    main()
