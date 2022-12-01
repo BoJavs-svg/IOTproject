@@ -29,16 +29,20 @@ class S(BaseHTTPRequestHandler):
         now = time.strftime("%H:%M:%S")
         self.wfile.write("GET request for {}".format(self.path).encode('utf-8'))
         if luz==-1 or temp==-1:
-            print("")
+            print("Nothing yet")
         else:
             pred=predict(temp,luz,now)    
             #Subelo a firestore
             cred = credentials.Certificate('IOT/credentials.json')
             firebase_admin.initialize_app(cred)
             db = firestore.client()
-            #Crea un documento con el nombre de now y que tenga los datos de pred, temp y luz
+            doc_ref = db.collection(u'prediccion').document("LastAccess")
+            doc_ref.set({
+                u'Accesso':"Day "+now
+            })
             doc_ref = db.collection(u'prediccion').document("Day "+now)
             doc_ref.set({
+                u'flip':1,
                 u'coffee': pred[0],
                 u'courtain': pred[1],
                 u'temperatura': temp,
