@@ -4,7 +4,7 @@ import pandas as pd
 import pickle
 import sqlalchemy
 
-db = mysql.connector.connect(host = 'hungry_leakey', user = 'user', password = '', port = 3306)
+db = mysql.connector.connect(host = '3306', user = 'user', password = '', port = 3306)
 cursor = db.cursor()
 #Upload data to database
 def upload_data():

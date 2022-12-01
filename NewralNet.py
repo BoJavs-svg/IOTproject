@@ -83,65 +83,7 @@ def predict(luz,temp,now):
     print(X_new)
     prediction = pickle_model.predict(X_new)
     print(prediction)
-    #Upload to DB "proyectoiot"
-    #engine = create_engine('mysql+mysqlconnector://root:@localhost/proyectoiot')
-    Base.metadata.create_all(engine)
-    session = sqlalchemy.orm.sessionmaker()
-    session.configure(bind=engine)
-    s = session()
-    entrada = Entrada(temperatura=temp, hora=hora, luz=luz, coffee=prediction[0], courtain=prediction[1])
-    s.add(entrada)
-    s.commit()
-    s.close()  
     return prediction
-def FillRandomDB():
-    engine = create_engine('mysql+mysqlconnector://root:@localhost/proyectoiot')
-    print("Conectado a la base de datos")
-    Base.metadata.create_all(engine)
-    session = sqlalchemy.orm.sessionmaker()
-    session.configure(bind=engine)
-    s = session()
-    for i in range(1000):
-        #Low light and low temperature
-        entrada = Entrada(temperatura=random.randint(0, 25), hora=random.randint(300, 420), luz=random.randint(0, 50), coffee=1, courtain=1)
-        s.add(entrada)
-        #Low light and high temperature
-        entrada = Entrada(temperatura=random.randint(25, 50), hora=random.randint(300, 420), luz=random.randint(0, 50), coffee=1, courtain=1)
-        s.add(entrada)
-        #High light and low temperature
-        entrada = Entrada(temperatura=random.randint(0, 25), hora=random.randint(300, 420), luz=random.randint(50, 100), coffee=1, courtain=0)
-        s.add(entrada)
-        #High light and high temperature
-        entrada = Entrada(temperatura=random.randint(25, 50), hora=random.randint(300, 420), luz=random.randint(50, 100), coffee=0, courtain=0)
-        s.add(entrada)
-        #Non hours
-        entrada = Entrada(temperatura=random.randint(0, 50), hora=random.randint(0, 300), luz=random.randint(0, 100), coffee=0, courtain=0)
-        s.add(entrada)
-        entrada = Entrada(temperatura=random.randint(0, 50), hora=random.randint(420, 1440), luz=random.randint(0, 100), coffee=0, courtain=0)
-        s.add(entrada)
-    s.commit()
-    print("Datos agregados")
-    s.close()
-def Train():
-    # Load the data
-    engine = create_engine('mysql+mysqlconnector://root:@localhost/proyectoiot')
-    Base.metadata.create_all(engine)
-    session = sqlalchemy.orm.sessionmaker()
-    session.configure(bind=engine)
-    s = session()
-    data = s.query(Entrada.temperatura, Entrada.hora, Entrada.luz, Entrada.coffee, Entrada.courtain).all()
-    df = pd.DataFrame(data, columns=['temperatura', 'hora', 'luz', 'coffee', 'courtain'])
-    #Create the neural network where the first 3 columns are the inputs and the last 2 are the outputs
-    mlp = MLPClassifier(hidden_layer_sizes=(5,5,5), max_iter=1000)
-    x=df[['temperatura', 'hora', 'luz']]
-    y=df[['coffee', 'courtain']]
-    #Train the model
-    mlp.fit(x,y)
-    predictions = mlp.predict(x)
-    print(classification_report(y,predictions))
-    #Save the model
-    with open('model.pkl', 'wb') as file:
-        pickle.dump(mlp, file)
 
 if __name__ == "__main__":
     from sys import argv
