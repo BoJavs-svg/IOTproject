@@ -38,7 +38,7 @@ class S(BaseHTTPRequestHandler):
             db = firestore.client()
             doc_ref = db.collection(u'prediccion').document("LastAccess")
             doc_ref.set({
-                u'Accesso':"Day "+now
+                u'accesso':"Day "+now
             })
             doc_ref = db.collection(u'prediccion').document("Day "+now)
             doc_ref.set({
