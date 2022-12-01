@@ -39,7 +39,8 @@ class S(BaseHTTPRequestHandler):
             #Crea un documento con el nombre de now y que tenga los datos de pred, temp y luz
             doc_ref = db.collection(u'prediccion').document("Day "+now)
             doc_ref.set({
-                u'prediccion': pred,
+                u'coffee': pred[0],
+                u'courtain': pred[1],
                 u'temperatura': temp,
                 u'luz': luz
             })
