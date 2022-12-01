@@ -1,0 +1,163 @@
+.user-side{
+    display: grid;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    justify-items: center;
+}
+
+.top-part{
+    grid-area: i;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.top-part p{
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--dark-blue);
+}
+
+.top-part p span{
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    width: 20rem;
+    height: 5rem;
+    background-image: url(../Assets/logo.svg);
+    background-position: left;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.circulo{
+    width: 7rem;
+    height: 7rem;
+    display: flex;
+    background-color: var(--dark-blue);
+    justify-content: center;
+    align-items: center;
+    border-radius: 10rem;
+    
+}
+
+.circulo img{
+    width: 6rem;
+    height: 6rem;
+}
+
+.information-part{
+    display: grid;
+    height: 90vh;
+    width: 95vw;
+    grid-template-areas: 
+                "i i i i i"
+                "b b a c c"
+                "d d e c c"
+                "d d f c c";
+    row-gap: 2rem;
+    column-gap: 2rem;
+}
+
+.section{
+    display: grid;
+    place-items: center;
+    padding: 3rem;
+    font-size: 3rem;
+    border:6px solid var(--dark-blue);
+    border-radius: 2rem;
+}
+.section > p{
+    block-size: fit-content;
+    text-align: center;
+    font-weight: 900;
+
+}
+
+.sleep{
+    grid-area: d;
+    background-color: var(--clear-night);
+}
+
+.sleep section{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.sleep section p{
+    margin-left: 8rem;
+    font-size: 15rem;
+    font-weight: 900;
+    color: #14162a;
+}
+
+.horas{
+    grid-area: b;
+    justify-content: center;
+    background-color: var(--beishe);
+}
+
+.coffee{
+    grid-area: c;
+}
+.coffee section p{
+    color: #7b4b27;
+    font-size: 7rem;
+    font-weight: 700;
+    text-align: center;
+}
+.coffee section{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.coffee section img{
+    height: 80%;
+}
+
+.cup{
+    grid-area: f;
+    place-items: center;
+    color: white;
+    background-color: #5faef9;
+}
+
+#cupSize, #doorNumber{
+    font-size: 4rem;
+}
+
+.door{
+    grid-area: e;
+    place-items: center;
+    color: white;
+    background-color: #eb4f4d;
+}
+
+.sensor{
+    grid-area: a;
+}
+
+.sensores{
+    display: grid;
+    row-gap: 2rem;
+    place-self: center;
+}
+
+.sensores p{
+    font-size: 3rem;
+    font-weight: 500;
+}
+.sensores span{
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    width: 4.5rem;
+    height: 4.5rem;
+    background-image: url(../Assets/sensor-icon.svg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}

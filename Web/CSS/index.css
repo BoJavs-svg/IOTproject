@@ -1,0 +1,167 @@
+#Banner{
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-direction: column;
+    margin-bottom: 150px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+#Banner h1{
+    width: 60vw;
+    color: var(--red);
+    text-align: right;
+    font-size: 7rem;
+}
+
+#Banner p{
+    width: 60vw;
+    font-weight: 900;
+    color: var(--grey);
+    text-align: right;
+    font-size: 2rem;
+}
+
+#Banner button{
+    width: 30vw;
+    height: 6vh;
+    font-size: 1.7rem;
+    color: white;
+    border-radius: 4rem;
+    border-style: none;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: var(--dark-blue);
+}
+
+#Banner section{
+    display: flex;
+    width: 50vw;
+    height: 35vh;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+#Banner img{
+    display: flex;
+    width: 750px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+#Servicio{
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 150px;
+}
+
+#Servicio h1{
+    font-size: 6rem;
+    text-align: center;
+    color: var(--dark-blue);
+}
+
+#Servicio img{
+    width: 65vw;
+}
+
+
+#Equipo{
+    width: 100vw;
+    height: 50vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 150px;
+}
+
+#Equipo h1{
+    font-size: 6rem;
+    text-align: center;
+    color: var(--dark-blue);
+}
+
+#QS{
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 150px;
+}
+
+#QS h1{
+    font-size: 6rem;
+    text-align: center;
+    color: var(--dark-blue); 
+}
+
+#QS img{
+    width: 35vw;
+}
+
+#QS section{
+    display: flex;
+    width: 85vw;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#QS p{
+    width: 40vw;
+    color: var(--grey);
+    text-align: right;
+    font-size: 3.2rem;
+}
+
+.circulo{
+    width: 10vw;
+    height: 10vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10rem;
+    background-color: var(--red);
+}
+
+.Integrante{
+    width: 15vw;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Integrante img{
+    width: 9vw;
+    height: 9vw;
+}
+
+.Integrante h3{
+    font-size: 2.3rem;
+    font-weight: 900;
+    text-align: center;
+    color: var(--red); 
+}
+
+.Integrante p{
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-align: center;
+    color: var(--grey); 
+}
+
+#Nosotros{
+    display: flex;
+}

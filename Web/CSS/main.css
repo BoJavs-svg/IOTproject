@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300%253B400%253B500%253B600%253B700%253B900&display=swap');
+
+:root{
+    --beishe: #F8F2EE;
+    --red: #D44438;
+    --light-red:#EB4E4C;
+    --dark-blue: #13162A;
+    --grey: #576A6E;
+    --clear-night: #dac1ea;
+    --font: 'Jost', sans-serif;
+    }
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+    font-family: var(--font);
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-size: 1.6rem; /* 16px */
+    background-color: var(--beishe);
+}

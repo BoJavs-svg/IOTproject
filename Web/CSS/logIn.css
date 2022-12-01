@@ -1,0 +1,76 @@
+body > img{
+    display: flex;
+    width: 45vw;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.submit{
+    display: flex;
+    justify-content: space-between;
+}
+
+.submit button{
+    width: 10vw;
+    height: 3vw;
+    font-size: 1.8rem;
+    color: white;
+    border-radius: 4rem;
+    border-style: none;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: var(--light-red);
+}
+
+.submit h3{
+    display: flex;
+    font-size: 1.8rem;
+    color: var(--grey);
+}
+
+.LogIn{
+    width: 40vw;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: auto;
+    margin-left: 6vw;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+
+.LogIn > img{
+    width: 12vw;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+}
+label span{
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 25px;
+}
+
+label{
+    display: flex;
+    flex-direction: column;
+}
+
+label input{
+    height: 5vh;
+    font-size: 2rem;
+    color: var(--grey);
+    background: rgba(255,255,255,0);
+    width: inherit;
+    border: none;
+    border-bottom: 5px solid var(--dark-blue);
+    margin-bottom: 30px;
+    appearance: none;
+    outline: none;
+}
