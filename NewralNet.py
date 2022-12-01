@@ -84,7 +84,7 @@ def predict(luz,temp,now):
     prediction = pickle_model.predict(X_new)
     print(prediction)
     #Upload to DB "proyectoiot"
-    engine = create_engine('mysql+mysqlconnector://root:@localhost/proyectoiot')
+    #engine = create_engine('mysql+mysqlconnector://root:@localhost/proyectoiot')
     Base.metadata.create_all(engine)
     session = sqlalchemy.orm.sessionmaker()
     session.configure(bind=engine)
