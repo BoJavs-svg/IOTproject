@@ -7,10 +7,8 @@ from sqlalchemy import Column, Integer, create_engine
 from sqlalchemy.orm import declarative_base
 import time
 import random
-
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import logging
-
 Base =declarative_base()
 class Entrada(Base):
     __tablename__ = 'entrada'
@@ -142,11 +140,6 @@ def Train():
     #Save the model
     with open('model.pkl', 'wb') as file:
         pickle.dump(mlp, file)
-def run(server_class=HTTPServer, handler_class=S, port=80):
-    server_address = ('', port)
-    httpd = server_class(server_address, handler_class)
-    print('Starting httpd...')
-    httpd.serve_forever()
 
 if __name__ == "__main__":
     from sys import argv
