@@ -5,9 +5,10 @@ import random
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
-
+import datetime
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import logging
+import pytz
 
 cred = credentials.Certificate('credentials.json')
 firebase_admin.initialize_app(cred)    
@@ -30,9 +31,9 @@ class S(BaseHTTPRequestHandler):
             print(temp)
             print("luz = ")
             print(luz)
-        curr_time=time.localtime()
-        now = (time.strftime('%H%M%S%d%m',curr_time))
-        print(curr_time)
+        my_datetime=datetime.datetime.now()
+        now = my_datetime.astimezone(pytz.timezone('US/Central')).strftime('%H%M%S%d%m')
+        print(now)
         self.wfile.write("GET request for {}".format(self.path).encode('utf-8'))
         if luz==-1 or temp==-1:
             print("Nothing yet")
