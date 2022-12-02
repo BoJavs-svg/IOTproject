@@ -9,6 +9,9 @@ from firebase_admin import firestore
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import logging
 
+cred = credentials.Certificate('credentials.json')
+firebase_admin.initialize_app(cred)    
+
 class S(BaseHTTPRequestHandler):
     def _set_response(self):
         self.send_response(200)
@@ -16,6 +19,7 @@ class S(BaseHTTPRequestHandler):
         self.end_headers()
 
     def do_GET(self):
+        time.sleep(1)
         self._set_response()
         temp=-1
         luz=-1
@@ -26,27 +30,31 @@ class S(BaseHTTPRequestHandler):
             print(temp)
             print("luz = ")
             print(luz)
-        now = time.strftime("%H:%M:%S")
+        curr_time=time.localtime()
+        now = (time.strftime('%H%M%S%d%m',curr_time))
+        print(curr_time)
         self.wfile.write("GET request for {}".format(self.path).encode('utf-8'))
         if luz==-1 or temp==-1:
             print("Nothing yet")
         else:
             pred=predict(temp,luz,now)    
             #Subelo a firestore
-            cred = credentials.Certificate('IOT/credentials.json')
-            firebase_admin.initialize_app(cred)
+            print("Conected")
             db = firestore.client()
-            doc_ref = db.collection(u'prediccion').document("LastAccess")
-            doc_ref.set({
-                u'accesso':"Day "+now
+            doc_ref = db.collection(u'aprediccion').document(u'LastAccess')
+            doc_ref.update({
+                u'accesso':now
             })
-            doc_ref = db.collection(u'prediccion').document("Day "+now)
-            doc_ref.set({
-                u'flip':1,
-                u'coffee': pred[0],
-                u'courtain': pred[1],
-                u'temperatura': temp,
-                u'luz': luz
+            print("Accessed")
+            print(type(now))
+            doc_ref2 = db.collection(u'aprediccion').document(str(now))
+            print("Day "+now)
+            doc_ref2.set({
+                u'flip':"1",
+                u'coffee': str(pred[0][0]),
+                u'courtain': str(pred[0][1]),
+                u'temperatura': str(temp),
+                u'luz': str(luz)
             })
             print("Subido a firestore")   
         
@@ -68,11 +76,7 @@ def predict(luz,temp,now):
         pickle_model = pickle.load(file)
     # Use the loaded model to make predictions
     #Convertir la hora a minutos
-    hora=now.split(":")[0]
-    minuto=now.split(":")[1]
-    hora=int(hora)*60
-    minuto=int(minuto)
-    hora=hora+minuto
+    hora=int(now[0:2])*60+int(now[2:4])
     X_new = [[luz,temp,hora]]
     print(X_new)
     prediction = pickle_model.predict(X_new)
